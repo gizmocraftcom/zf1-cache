@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
 {
     private $_instance;
@@ -48,18 +50,14 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         unset($this->_instance);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Core(array('lifetime' => 3600, 'caching' => true));
     }
 
-    /**
-     * @group ZF-7568
-     * @doesNotPerformAssertions
-     */
+    #[Group('ZF-7568')]
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCallWithZendConfig()
     {
         $test = new Zend_Cache_Core(
@@ -67,9 +65,7 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @group ZF-7568
-     */
+    #[Group('ZF-7568')]
     public function testSettingOptionsWithZendConfig()
     {
         $config = new Zend_Config(array('lifetime' => 3600, 'caching' => true));
@@ -78,9 +74,7 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(3600, $test->getOption('lifetime'));
     }
 
-    /**
-     * @group ZF-9092
-     */
+    #[Group('ZF-9092')]
     public function testSettingLifetimeAsEmptyIsInterpretedAsNull()
     {
         $config = new Zend_Config(array('lifetime' => '', 'caching' => true));
@@ -95,17 +89,13 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         $test = new Zend_Cache_Core(array(0 => 'bar', 'lifetime' => 3600));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testSetLifeTime()
     {
         $this->_instance->setLifeTime(3600);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testSetBackendCorrectCall1()
     {
         $backend = new Zend_Cache_Backend_File(array());
@@ -121,9 +111,7 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         $this->assertIsArray($log['args'][0]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testSetOptionCorrectCall()
     {
         $this->_instance->setOption('caching', false);
@@ -139,8 +127,8 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
      * Unknown options are okay and should be silently ignored. Non-string
      * options, however, should throw exceptions.
      *
-     * @group ZF-5034
      */
+    #[Group('ZF-5034')]
     public function testSetOptionUnknownOption1()
     {
         $this->expectException(Zend_Cache_Exception::class);
@@ -150,9 +138,9 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
     /**
      * Unknown options are okay and should be silently ignored. Non-string
      * options, however, should throw exceptions.
-     * @doesNotPerformAssertions
-     * @group ZF-5034
      */
+    #[DoesNotPerformAssertions]
+    #[Group('ZF-5034')]
     public function testSetOptionUnknownOption2()
     {
         $this->_instance->setOption('foo', 1200);
@@ -487,9 +475,7 @@ class Zend_Cache_CoreTest extends PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Zend_Log::class, $logger);
     }
 
-    /**
-     * @group ZF-10189
-     */
+    #[Group('ZF-10189')]
     public function testIfFileZendLogWasIncluded()
     {
         if (class_exists('Zend_Log', false)) {

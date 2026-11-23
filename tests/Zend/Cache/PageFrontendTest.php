@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_PageFrontendTest extends PHPUnit\Framework\TestCase
 {
     private $_instance;
@@ -69,8 +71,8 @@ class Zend_Cache_PageFrontendTest extends PHPUnit\Framework\TestCase
 
     /**
      * The only bad default options are non-string keys
-     * @group ZF-5034
      */
+    #[Group('ZF-5034')]
     public function testConstructorWithBadDefaultOptions2()
     {
         $this->expectException(Exception::class);
@@ -91,8 +93,8 @@ class Zend_Cache_PageFrontendTest extends PHPUnit\Framework\TestCase
 
     /**
      * Only non-string keys should raise exceptions
-     * @group ZF-5034
      */
+    #[Group('ZF-5034')]
     public function testConstructorWithBadRegexps3()
     {
         $array = array(
@@ -173,10 +175,8 @@ class Zend_Cache_PageFrontendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('DEBUG HEADER : This is a cached page !foo', $data);
     }
 
-    /**
-     * @group ZF-10952
-     * @doesNotPerformAssertions
-     */
+    #[Group('ZF-10952')]
+    #[DoesNotPerformAssertions]
     public function testNootice()
     {
         $regex = array('^/article/' => array('cache' => false));

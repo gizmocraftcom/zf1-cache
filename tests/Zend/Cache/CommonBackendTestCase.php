@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
 
 /**
  * @category   Zend
@@ -27,7 +28,6 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
 abstract class Zend_Cache_CommonBackendTestCase extends PHPUnit\Framework\TestCase
 {
@@ -112,9 +112,7 @@ abstract class Zend_Cache_CommonBackendTestCase extends PHPUnit\Framework\TestCa
         $test  = new $class(array(1 => 'bar'));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testSetDirectivesCorrectCall()
     {
         $this->_instance->setDirectives(array('lifetime' => 3600, 'logging' => true));
@@ -126,9 +124,7 @@ abstract class Zend_Cache_CommonBackendTestCase extends PHPUnit\Framework\TestCa
         $this->_instance->setDirectives('foo');
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testSetDirectivesBadDirective()
     {
         // A bad directive (not known by a specific backend) is possible

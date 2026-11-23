@@ -19,6 +19,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend_Cache
@@ -55,9 +56,7 @@ class Zend_Cache_ManagerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($manager->getCache('cache1') instanceof Zend_Cache_Core);
     }
 
-    /**
-     * @group ZF-10220
-     */
+    #[Group('ZF-10220')]
     public function testGetAvialableCaches()
     {
         $manager = new Zend_Cache_Manager();
@@ -258,9 +257,7 @@ class Zend_Cache_ManagerTest extends PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Zend_Cache_Core::class, $tagCache);
     }
 
-    /**
-     * @group GH-189
-     */
+    #[Group('GH-189')]
     public function testSetsOptionsWithCustomFrontendAndBackendNamingAndAutoload()
     {
         $manager = new Zend_Cache_Manager;

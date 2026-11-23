@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTestCase
 {
     protected $_instance;
@@ -104,9 +106,7 @@ class Zend_Cache_FileBackendTest extends Zend_Cache_CommonExtendedBackendTestCas
         }
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_File(array());

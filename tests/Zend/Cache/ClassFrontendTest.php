@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @todo: Should this class be named Zend_Cache_Something?
@@ -29,8 +31,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class test
 {
     private $_string = 'hello !';
@@ -71,8 +73,8 @@ class test
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
 {
     private $_instance1;
@@ -106,9 +108,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
         unset($this->_instance2);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall1()
     {
         $options = array(
@@ -118,9 +118,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
         $test = new Zend_Cache_Frontend_Class($options);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall2()
     {
         $options = array(
@@ -227,9 +225,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('foobar_output(param1, param2)', $data);
     }
 
-    /**
-     * @group GH-125
-     */
+    #[Group('GH-125')]
     public function testCallCorrectCall8()
     {
         $this->_instance2->setOption('cache_by_default', true);
@@ -253,10 +249,8 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
         $instance = new Zend_Cache_Frontend_Class($options);
     }
 
-    /**
-     * @group ZF-5034
-     * @doesNotPerformAssertions
-     */
+    #[Group('ZF-5034')]
+    #[DoesNotPerformAssertions]
     public function testCallingConstructorWithInvalidOptionShouldNotRaiseException()
     {
         $options = array(
@@ -286,9 +280,7 @@ class Zend_Cache_ClassFrontendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('startend', $output);
     }
 
-    /**
-     * @group ZF-11337
-     */
+    #[Group('ZF-11337')]
     public function testThrowExceptionOnInvalidCallback()
     {
         $this->expectException('Zend_Cache_Exception');

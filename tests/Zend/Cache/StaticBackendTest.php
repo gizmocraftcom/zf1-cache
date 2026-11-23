@@ -4,11 +4,13 @@
  * @subpackage UnitTests
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @package    Zend_Cache
  * @subpackage UnitTests
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTestCase
 {
     protected $_instance;
@@ -149,9 +151,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTestCase
         rmdir($this->_instance->getOption('public_dir') . '/foo');
     }
 
-    /**
-     * @group GH-91
-     */
+    #[Group('GH-91')]
     public function testDirectoryUmaskTriggersError()
     {
         try {
@@ -165,9 +165,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTestCase
         }
     }
 
-    /**
-     * @group GH-91
-     */
+    #[Group('GH-91')]
     public function testFileUmaskTriggersError()
     {
         try {
@@ -273,9 +271,7 @@ class Zend_Cache_StaticBackendTest extends Zend_Cache_CommonBackendTestCase
         $this->assertFalse($this->_instance->test(bin2hex('bar2')));
     }
 
-    /**
-     * @group ZF-10558
-     */
+    #[Group('ZF-10558')]
     public function testRemoveRecursively()
     {
         @mkdir($this->_cache_dir . '/issues/zf10558', 0777, true);

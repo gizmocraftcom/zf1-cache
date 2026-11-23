@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_FileFrontendTest extends PHPUnit\Framework\TestCase
 {
     private $_instance1;
@@ -210,9 +211,7 @@ class Zend_Cache_FileFrontendTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('foo', $this->_instance1->load('cache_id', true));
     }
 
-    /**
-     * @group ZF-11547
-     */
+    #[Group('ZF-11547')]
     public function testMultipleMasterFiles()
     {
         $this->assertCount(2, $this->_instance3->getOption('master_files'));

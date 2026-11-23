@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
+
 class Zend_Cache_Backend_FooBarTest extends Zend_Cache_Backend_File
 {
 }
@@ -40,8 +42,8 @@ class FooBarTestFrontend extends Zend_Cache_Core
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_FactoryTest extends PHPUnit\Framework\TestCase
 {
     public function setUp(): void
@@ -108,9 +110,7 @@ class Zend_Cache_FactoryTest extends PHPUnit\Framework\TestCase
         Zend_Cache::factory('Output', 'badBackend');
     }
 
-    /**
-     * @group ZF-11988
-     */
+    #[Group('ZF-11988')]
     public function testNamespacedFrontendClassAccepted()
     {
         try {
@@ -121,9 +121,7 @@ class Zend_Cache_FactoryTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    /**
-     * @group ZF-11988
-     */
+    #[Group('ZF-11988')]
     public function testNamespacedBackendClassAccepted()
     {
         try {

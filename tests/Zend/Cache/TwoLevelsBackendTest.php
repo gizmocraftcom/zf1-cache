@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTestCase
 {
     protected $_instance;
@@ -75,9 +77,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         unset($this->_instance);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall()
     {
         $slowBackend        = 'File';
@@ -129,9 +129,7 @@ class Zend_Cache_TwoLevelsBackendTest extends Zend_Cache_CommonExtendedBackendTe
         $this->assertEquals(100, $cache->load($id));
     }
 
-    /**
-     * @group ZF-9855
-     */
+    #[Group('ZF-9855')]
     public function testSaveReturnsTrueIfFastIsFullOnFirstSave()
     {
         $slowBackend = 'File';

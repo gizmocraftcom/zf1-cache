@@ -20,6 +20,8 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\DoesNotPerformAssertions;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +29,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Cache
  */
+#[Group('Zend_Cache')]
 class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBackendTestCase
 {
     protected $_instance;
@@ -92,17 +94,13 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         }
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testConstructorCorrectCall()
     {
         $test = new Zend_Cache_Backend_Libmemcached();
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testCleanModeOld()
     {
         $this->_instance->setDirectives(array('logging' => false));
@@ -111,9 +109,7 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         $this->_instance->setDirectives(array('logging' => true));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testCleanModeMatchingTags()
     {
         $this->_instance->setDirectives(array('logging' => false));
@@ -122,9 +118,7 @@ class Zend_Cache_LibmemcachedBackendTest extends Zend_Cache_CommonExtendedBacken
         $this->_instance->setDirectives(array('logging' => true));
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
+    #[DoesNotPerformAssertions]
     public function testCleanModeNotMatchingTags()
     {
         $this->_instance->setDirectives(array('logging' => false));
