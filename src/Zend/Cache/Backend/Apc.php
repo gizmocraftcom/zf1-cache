@@ -26,6 +26,9 @@
  * @subpackage Zend_Cache_Backend
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * Uses the APCu extension (apcu_* functions). The legacy apc_* functions of the discontinued APC extension are only
+ * used as a fallback when APCu is not loaded.
  */
 class Zend_Cache_Backend_Apc extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
 {

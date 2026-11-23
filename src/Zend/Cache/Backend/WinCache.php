@@ -26,6 +26,8 @@
  * @subpackage Zend_Cache_Backend
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @deprecated The WinCache extension has no release for PHP 8.5 or 8.6, so this backend cannot be loaded on supported PHP versions.
+ *             It is kept for compatibility and untested here. Use Zend_Cache_Backend_Apc (APCu), Zend_Cache_Backend_File or Zend_Cache_Backend_Libmemcached instead.
  */
 class Zend_Cache_Backend_WinCache extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
 {
