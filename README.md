@@ -1,7 +1,6 @@
 # Zend Framework 1 - Cache
 
 [![Build](https://github.com/gizmocraftcom/zf1-cache/workflows/Build/badge.svg?event=push)](https://github.com/gizmocraftcom/zf1-cache/actions?query=workflow%3ABuild+event%3Apush)
-[![codecov](https://codecov.io/gh/gizmocraftcom/zf1-cache/branch/master/graph/badge.svg)](https://codecov.io/gh/gizmocraftcom/zf1-cache)
 [![Latest Stable Version](https://poser.pugx.org/gizmocraft/zendframework1-cache/v/stable)](https://packagist.org/packages/gizmocraft/zendframework1-cache)
 [![Total Downloads](https://poser.pugx.org/gizmocraft/zendframework1-cache/downloads)](https://packagist.org/packages/gizmocraft/zendframework1-cache)
 [![License](https://poser.pugx.org/gizmocraft/zendframework1-cache/license)](https://packagist.org/packages/gizmocraft/zendframework1-cache)
